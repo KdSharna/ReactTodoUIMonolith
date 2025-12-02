@@ -1,5 +1,6 @@
 trigger: none 
-pool: Default
+
+pool: My_pool
 
 steps: 
 - task: PowerShell@2
