@@ -33,4 +33,11 @@ steps:
     azureSubscription: 'Secret_Service'
     scriptType: 'ps'
     scriptLocation: 'inlineScript'
-    inlineScript: 'az storage blob upload --account-name tattu101 --container-name con99 --name build.zip --file build.zip --account-key "$(storageKey)"'
+    inlineScript: 
+            az storage blob upload `
+        --account-name tattu101 `
+        --container-name con99 `
+        --name build.zip `
+        --file "$(System.DefaultWorkingDirectory)/build.zip" `
+        --account-key "$(storageKey)"
+
