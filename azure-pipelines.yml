@@ -20,3 +20,17 @@ steps:
   inputs:
     targetType: 'inline'
     script: 'npm run build'
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/build/'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(System.DefaultWorkingDirectory)/build.zip'
+    replaceExistingArchive: true
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'Secret_Service'
+    scriptType: 'ps'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az storage blob upload --account-name tattu101 --container-name con99 --name build.zip --file build.zip --account-key "$(storageKey)"'
