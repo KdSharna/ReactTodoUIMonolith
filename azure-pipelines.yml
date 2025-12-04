@@ -29,16 +29,22 @@ steps:
     replaceExistingArchive: true
 
 
-- task: AzureCLI@2
+# - task: AzureCLI@2
+#   inputs:
+#     azureSubscription: 'Secret_Service'
+#     scriptType: 'ps'
+#     scriptLocation: 'inlineScript'
+#     inlineScript: |
+#       az storage blob upload `
+#         --account-name tattu101 `
+#         --container-name con99 `
+#         --name build.zip `
+#         --file "$(System.DefaultWorkingDirectory)/build.zip" `
+#         --account-key "$(storageKey)"
+
+- task: PublishPipelineArtifact@1
   inputs:
-    azureSubscription: 'Secret_Service'
-    scriptType: 'ps'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
-      az storage blob upload `
-        --account-name tattu101 `
-        --container-name con99 `
-        --name build.zip `
-        --file "$(System.DefaultWorkingDirectory)/build.zip" `
-        --account-key "$(storageKey)"
+    targetPath: '$(System.DefaultWorkingDirectory)/build.zip'
+    artifact: 'todo-ui'
+    publishLocation: 'pipeline'
 
