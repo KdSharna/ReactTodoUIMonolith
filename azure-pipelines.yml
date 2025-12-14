@@ -36,8 +36,8 @@ steps:
 #     scriptLocation: 'inlineScript'
 #     inlineScript: $(cli_login)
 
-- task: PublishBuildArtifacts@1
+- task: PublishPipelineArtifact@1
   inputs:
-    ArtifactName: 'Todo-UI'
-    publishLocation: 'Pipeline'
-    TargetPath: '$(System.DefaultWorkingDirectory)/build.zip'
+    targetPath: '$(System.DefaultWorkingDirectory)/build.zip'
+    artifact: 'Todo-UI'
+    publishLocation: 'pipeline'
