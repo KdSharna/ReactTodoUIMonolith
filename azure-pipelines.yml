@@ -28,3 +28,10 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(System.DefaultWorkingDirectory)/build.zip'
     replaceExistingArchive: true
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'service_ado'
+    scriptType: 'ps'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'cli_login'
