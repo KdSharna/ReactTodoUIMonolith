@@ -34,4 +34,4 @@ steps:
     azureSubscription: 'service_ado'
     scriptType: 'ps'
     scriptLocation: 'inlineScript'
-    inlineScript: 'cli_login'
+    inlineScript: $(cli_login)
