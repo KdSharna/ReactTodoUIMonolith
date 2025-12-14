@@ -39,5 +39,5 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     ArtifactName: 'Todo-UI'
-    publishLocation: 'Container'
+    publishLocation: 'Pipeline'
     TargetPath: '$(System.DefaultWorkingDirectory)/build.zip'
