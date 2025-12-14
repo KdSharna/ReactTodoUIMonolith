@@ -29,9 +29,15 @@ steps:
     archiveFile: '$(System.DefaultWorkingDirectory)/build.zip'
     replaceExistingArchive: true
 
-- task: AzureCLI@2
+# - task: AzureCLI@2
+#   inputs:
+#     azureSubscription: 'service_ado'
+#     scriptType: 'ps'
+#     scriptLocation: 'inlineScript'
+#     inlineScript: $(cli_login)
+
+- task: PublishBuildArtifacts@1
   inputs:
-    azureSubscription: 'service_ado'
-    scriptType: 'ps'
-    scriptLocation: 'inlineScript'
-    inlineScript: $(cli_login)
+    ArtifactName: 'Todo-UI'
+    publishLocation: 'Container'
+    TargetPath: '$(System.DefaultWorkingDirectory)/build.zip'
